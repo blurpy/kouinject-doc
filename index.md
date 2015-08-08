@@ -10,9 +10,9 @@ KouInject is a simple but powerful dependency injection framework for Java, with
 
 ## Latest news:
 
-  * **20.04.2011:** KouInject v1.2 is released [Read more](news/#20.04.2011---kouinject-v1.2-is-released).
-  * **02.03.2011:** KouInject v1.1 is released [Read more](news/#02.03.2011---kouinject-v1.1-is-released).
-  * **20.12.2010:** KouInject v1.0 is released [Read more](news/#20.12.2010---kouinject-v1.0-is-released).
+  * **20.04.2011:** KouInject v1.2 is released [Read more](news/#20-04-2011-kouinject-v1-2-is-released).
+  * **02.03.2011:** KouInject v1.1 is released [Read more](news/#02-03-2011-kouinject-v1-1-is-released).
+  * **20.12.2010:** KouInject v1.0 is released [Read more](news/#20-12-2010-kouinject-v1-0-is-released).
 
 
 ## Features:

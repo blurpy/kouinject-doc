@@ -17,7 +17,7 @@ JSR-330 gives you a standard way of annotating injections in your beans (objects
 
 Changes since v1.0:
 
-  * [Added support for factory methods with @Produces](#@produces)
+  * [Added support for factory methods with @Produces](#produces)
 
 
 ## Getting started

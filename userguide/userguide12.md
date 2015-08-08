@@ -16,7 +16,7 @@ JSR-330 gives you a standard way of annotating injections in your beans (objects
 
 Changes since v1.1:
 
-  * [Added support for custom @Components](#custom-@components)
+  * [Added support for custom @Components](#custom-components)
   * [Added support for profiles with @Profile](#profiles)
   * [Added support for generics](#generics)
   * [Improved support for running with a SecurityManager](#securitymanager)
