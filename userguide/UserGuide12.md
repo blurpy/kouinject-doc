@@ -1,5 +1,7 @@
 ---
 title: How to use KouInject v1.2 (current release)
+layout: default
+permalink: userguide/1.2/
 ---
 
 
@@ -29,7 +31,7 @@ The best way to get started is to read the [JSR-330 API](http://atinject.googlec
 
 To use KouInject you need to create an instance of an [Injector](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.2/net/usikkert/kouinject/Injector.html). There is only one implementation, and that is the [DefaultInjector](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.2/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.DefaultInjector;
