@@ -1,4 +1,4 @@
 permalink: pretty
-baseurl: kouinject-doc
+baseurl: /kouinject-doc
 kramdown:
   input: GFM
