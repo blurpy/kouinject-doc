@@ -1,4 +1,5 @@
 ---
+title: How to use KouInject v1.2 (current release)
 ---
 
 
