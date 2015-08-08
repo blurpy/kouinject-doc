@@ -23,7 +23,7 @@ KouInject is available in Maven Central Repository. The only thing you need to d
 
 Put this in the `<dependencies>` section of your pom.xml and you are ready to go:
 
-```
+```xml
 <dependency>
   <groupId>net.usikkert.kouinject</groupId>
   <artifactId>kouinject</artifactId>
@@ -40,7 +40,7 @@ KouInject works by scanning the classpath for annotated classes, then instantiat
 
 To get the beans loaded you will have to tell the container about the base-package to use. The base-package is the top level package where the annotated classes are located. All classes in that package will be scanned, and all sub-packages as well. Any annotated class will become a bean.
 
-```
+```java
 package some;
 
 import net.usikkert.kouinject.AnnotationBasedBeanDataHandler;
@@ -68,7 +68,7 @@ In KouInject a bean is any class having the annotation `@Component`. Only those 
 
 This class has no dependencies and will be instantiated by calling the default constructor. After the constructor has been called it is ready to use.
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -87,7 +87,7 @@ public class FirstBean {
 
 Sometimes it's useful to have all dependencies available in the constructor. This can be accomplished by creating a constructor with another bean as a parameter and marking the constructor with the `@Inject` annotation. The constructor can take any number of parameters. But all the parameters have to be other beans.
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -108,7 +108,7 @@ public class SecondBean {
 
 If you do not want to expose a dependency, you can get the container to inject an instance of another bean directly into a field right after instantiation, without using a setter. Just annotate the field with the `@Inject` annotation. The field does not have to be public, and you can annotate as many fields as you like.
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -130,7 +130,7 @@ public class ThirdBean {
 
 If it's OK to expose the dependency then a setter injection can be useful. Just mark the setter with the `@Inject` annotation. The method can be called anything, and take any number of parameters. But all the parameters have to be other beans.
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;

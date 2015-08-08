@@ -49,7 +49,7 @@ The injector will now scan the classpath for any classes marked with the annotat
 
 Here is an example of a bean in its simplest form:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -62,7 +62,7 @@ public class SomeBean {
 
 Beans are created on demand. So even though the injector scans `SomeBean`, it's not instantiated until you ask for it, like this:
 
-```
+```java
 SomeBean someBean = injector.getBean(SomeBean.class);
 ```
 
@@ -103,7 +103,7 @@ The usage of `@Component` can then be replaced on your controller beans with `@C
 
 If using a single base package is too limiting, or you want more control over which classes are scanned, then you can specify each package manually:
 
-```
+```java
 Injector injector = new DefaultInjector("some.basepackage",
                                         "some.different.basepackage",
                                         "a.third.basepackage");
@@ -121,7 +121,7 @@ The [@Inject](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/Inj
 
 If you want to inject parameters into a constructor you must mark the constructor using the `@Inject` annotation. Any number of parameters can be injected, but at most one constructor can be marked for injection. If no constructor is marked, then the (parameterless) default constructor is used.
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -132,7 +132,7 @@ public class SomeOtherBean {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -154,7 +154,7 @@ public class SomeBean {
 Any number of fields can be injected, as long as they are marked with `@Inject`.
 The fields can be of any visibility, but not `static` or `final`.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -175,7 +175,7 @@ Any number of methods can be injected with any number of parameters, as long as 
 
 The annotation is not inherited in overridden methods, so if a method marked for injection in a superclass is overridden by a method not marked for injection, the method will not be injected.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -205,7 +205,7 @@ The [@Qualifier](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/
 
 The recommended way to use qualifiers is to create custom qualifiers. A custom qualifier may look like this:
 
-```
+```java
 package some.basepackage;
 
 import java.lang.annotation.Documented;
@@ -225,7 +225,7 @@ This gives you a qualifier annotation `@Green` with the value `Green`. The advan
 
 This is the bean to inject:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -239,7 +239,7 @@ public class GreenColor implements Color {
 
 And this is where the injection occurs:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -257,7 +257,7 @@ public class Car {
 
 Or it may look like this if injecting into a constructor:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -280,7 +280,7 @@ Each parameter in the constructor may have it's own qualifier. Using qualifiers 
 
 `@Named` is a string based qualifier. That means that you specify the qualifier as the value of the annotation, instead of the class name. The example from above would look like this using `@Named`:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -292,7 +292,7 @@ public class GreenColor implements Color {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -324,7 +324,7 @@ Singleton scope creates a new instance of a bean on first request, and then cach
 
 To set the scope to singleton on a bean, use the [@Singleton](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/Singleton.html) annotation.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Singleton;
@@ -344,7 +344,7 @@ public class SomeBean {
 
 It's easier to explain with an example:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -372,7 +372,7 @@ The same rules for qualifiers apply to collections as well. So if you specify a 
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Named;
@@ -383,7 +383,7 @@ import net.usikkert.kouinject.annotation.Component;
 public class CasualRadioListener implements RadioListener {}
 ```
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -392,7 +392,7 @@ import net.usikkert.kouinject.annotation.Component;
 public class RegularRadioListener implements RadioListener {}
 ```
 
-```
+```java
 package some.basepackage;
 
 import java.util.Collection;
@@ -421,7 +421,7 @@ Here we can see one listener with a qualifier, and one without. To get an instan
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import java.util.Collection;
@@ -460,7 +460,7 @@ Compared to annotating beans with `@Component`, using a factory gives you the ab
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import java.util.Date;
@@ -479,7 +479,7 @@ public class Factory {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import java.util.Date;
@@ -511,7 +511,7 @@ Using `@Any` on the factory method effectively means that the qualifier check is
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import java.util.Properties;
@@ -533,7 +533,7 @@ public class StringPropertyFactory {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -571,7 +571,7 @@ The functionality is based on profiles in [Spring 3.1](http://blog.springsource.
 
 To start using profiles you have to annotate the beans with the profiles you want them to have, and then tell the injector which profiles you want to be active. The [@Profile]({{ site.baseurl }}/javadoc/kouinject-1.2/net/usikkert/kouinject/annotation/Profile.html) annotation is used to create profiles. An example is seen here:
 
-```
+```java
 package some.basepackage;
 
 import java.lang.annotation.Documented;
@@ -592,7 +592,7 @@ public @interface Production {
 
 Profiles are annotations annotated with `@Profile`. The name of the annotation becomes the name of the profile, in this case "production" (case insensitive). Example of using the profile:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -607,7 +607,7 @@ public class FtpFileStorage implements FileStorage {
 The `FtpFileStorage` bean is now part of the production profile. If the production profile is active then this bean will be available for injection when we request a `FileStorage` bean.
 During development we might not care about storing files on FTP. Instead we want to store files in a local temporary directory, and create an alternative `FileStorage` bean:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -626,7 +626,7 @@ To choose which profiles are active you have to use an alternative constructor o
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import java.util.Arrays;
@@ -644,7 +644,7 @@ public class ApplicationMain {
 The profiles "production" and "swing" are active profiles, and "some.basepackage" is the package to scan for beans.
 To make activating profiles more dynamic you could get the list from a property with a couple of lines of code:
 
-```
+```java
 String activeProfilesProperty = System.getProperty("com.something.active.profiles");
 List<String> activeProfiles = Arrays.asList(activeProfilesProperty.split(","));
 ```
@@ -662,7 +662,7 @@ Assignability describes the relationship between a point of injection and a bean
 
 In it's simplest form it can look like this:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -673,7 +673,7 @@ public class Apple {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -691,7 +691,7 @@ The injection point here is `Apple`, and the bean to inject is also `Apple`. The
 
 An injection point is also assignable from a subclass or an implemented interface. Example:
 
-```
+```java
 package some.basepackage;
 
 public interface Fruit {
@@ -699,7 +699,7 @@ public interface Fruit {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 public abstract class RoundFruit implements Fruit {
@@ -707,7 +707,7 @@ public abstract class RoundFruit implements Fruit {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -718,7 +718,7 @@ public class Apple extends RoundFruit {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -767,7 +767,7 @@ Array beans can only be created from factories. Be carefull with arrays and inhe
 
 Generics have their own special rules when it comes to assignability. Lets look at an example of a couple of generic classes:
 
-```
+```java
 package some.basepackage;
 
 public interface Box<T> {
@@ -775,7 +775,7 @@ public interface Box<T> {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 public class PlasticBox<T> implements Box<T> {
@@ -785,14 +785,14 @@ public class PlasticBox<T> implements Box<T> {
 
 These classes can be used like this:
 
-```
+```java
 Box<Apple> boxOfApple = new PlasticBox<Apple>();
 ```
 
 This works fine. `Box` is assignable from `PlasticBox`.
 This, however, does not even compile:
 
-```
+```java
 PlasticBox<Fruit> boxOfFruit = new PlasticBox<Apple>();
 ```
 
@@ -800,7 +800,7 @@ One would think that since `Fruit` is assignable from `Apple`, then `PlasticBox<
 
 Here is an example of these classes being used by the injector:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -811,7 +811,7 @@ public class AppleBox extends PlasticBox<Apple> {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -838,7 +838,7 @@ These are all legal injection points, and they all get an instance of `AppleBox`
 
 Generics can also be used in factories. The subclass `AppleBox` could be replaced by the following factory:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -872,7 +872,7 @@ The built-in support for `Collection`, `Provider` and `CollectionProvider` behav
 
 `PlasticBox<Apple>` is a bean that can be injected standalone, or in any of the mentioned wrappers. Example:
 
-```
+```java
 package some.basepackage;
 
 import java.util.Collection;
@@ -902,13 +902,13 @@ The lookup of `PlasticBox<Apple>` is performed the exact same way in all three i
 Because of a limitation in the language, it is not possible to get the class reference to a generic class with parameters.
 That means you can **not** do this to get a generic bean directly from the injector:
 
-```
+```java
 Box<Apple> boxOfApple = injector.getBean(Box<Apple>.class);
 ```
 
 As a workaround, the injector offers an alternative approach, where you use the class [TypeLiteral]({{ site.baseurl }}/javadoc/kouinject-1.2/net/usikkert/kouinject/generics/TypeLiteral.html) instead:
 
-```
+```java
 Box<Apple> boxOfApple = injector.getBean(new TypeLiteral<Box<Apple>>() {});
 ```
 

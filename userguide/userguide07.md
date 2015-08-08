@@ -25,7 +25,7 @@ The best way to get started is to read the [JSR-330 API](http://atinject.googlec
 
 To use KouInject you need to create an instance of an [Injector]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/Injector.html). There is only one implementation in v0.7, and that is the [DefaultInjector]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
 
-```
+```java
 Injector injector = new DefaultInjector("some.basepackage");
 ```
 
@@ -33,7 +33,7 @@ The injector will now scan the classpath for any classes marked with the annotat
 
 Here is an example of a bean in its simplest form:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -46,7 +46,7 @@ public class SomeBean {
 
 Beans are created on demand. So even though the injector scans SomeBean, it's not instantiated until you ask for it, like this:
 
-```
+```java
 SomeBean someBean = injector.getBean(SomeBean.class);
 ```
 
@@ -55,7 +55,7 @@ SomeBean someBean = injector.getBean(SomeBean.class);
 
 If using a single base package is too limiting, or you want more control over which classes are scanned, then you can specify each package manually:
 
-```
+```java
 Injector injector = new DefaultInjector("some.basepackage",
                                         "some.different.basepackage",
                                         "a.third.basepackage");
@@ -65,7 +65,7 @@ You can specify an unlimited number of packages this way. Sub-packages of each b
 
 **Tip**: If you have many base packages and want to avoid outdated paths or miss-spelled paths then you can get the packages from classes you know reside in them:
 
-```
+```java
 Injector injector = new DefaultInjector(ClassInSomeBasePackage.class.getPackage().getName(),
                                         ClassInSomeDifferentBasePackage.class.getPackage().getName(),
                                         ClassInAThirdBasePackage.class.getPackage().getName());
@@ -81,7 +81,7 @@ The [@Inject](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/Inj
 
 If you want to inject parameters into a constructor you must mark the constructor using the `@Inject` annotation. Any number of parameters can be injected, but at most one constructor can be marked for injection. If no constructor is marked, then the (parameterless) default constructor is used.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -104,7 +104,7 @@ public class SomeBean {
 Any number of fields can be injected, as long as they are marked with `@Inject`.
 The fields can be of any visibility, but not `static` or `final`.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -125,7 +125,7 @@ Any number of methods can be injected with any number of parameters, as long as 
 
 The annotation is not inherited in overridden methods, so if a method marked for injection in a superclass is overridden by a method not marked for injection, the method will not be injected.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -155,7 +155,7 @@ The [@Qualifier](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/
 
 The recommended way to use qualifiers is to create custom qualifiers. A custom qualifier may look like this:
 
-```
+```java
 package some.basepackage;
 
 import java.lang.annotation.Documented;
@@ -175,7 +175,7 @@ This gives you a qualifier annotation `@Green` with the value `Green`. The advan
 
 This is the bean to inject:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -189,7 +189,7 @@ public class GreenColor implements Color {
 
 And this is where the injection occurs:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -207,7 +207,7 @@ public class Car {
 
 Or it may look like this if injecting into a constructor:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -230,7 +230,7 @@ Each parameter in the constructor may have it's own qualifier. Using qualifiers 
 
 `@Named` is a string based qualifier. That means that you specify the qualifier as the value of the annotation, instead of the class name. The example from above would look like this using `@Named`:
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -242,7 +242,7 @@ public class GreenColor implements Color {
 }
 ```
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -274,7 +274,7 @@ Singleton scope creates a new instance of a bean on first request, and then cach
 
 To set the scope to singleton on a bean, use the [@Singleton](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/Singleton.html) annotation.
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Singleton;
@@ -294,7 +294,7 @@ public class SomeBean {
 
 It's easier to explain with an example:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Inject;
@@ -322,7 +322,7 @@ The same rules for qualifiers apply to collections as well. So if you specify a 
 
 Example:
 
-```
+```java
 package some.basepackage;
 
 import javax.inject.Named;
@@ -333,7 +333,7 @@ import net.usikkert.kouinject.annotation.Component;
 public class CasualRadioListener implements RadioListener {}
 ```
 
-```
+```java
 package some.basepackage;
 
 import net.usikkert.kouinject.annotation.Component;
@@ -342,7 +342,7 @@ import net.usikkert.kouinject.annotation.Component;
 public class RegularRadioListener implements RadioListener {}
 ```
 
-```
+```java
 package some.basepackage;
 
 import java.util.Collection;
