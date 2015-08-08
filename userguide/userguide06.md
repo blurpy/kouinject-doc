@@ -14,16 +14,16 @@ JSR-330 gives you a standard way of annotating injections in your beans (objects
 
 ## Getting started
 
-The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.6/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](http://kouinject.googlecode.com/svn/examples/kouinject-0.6-examples/).
+The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API]({{ site.baseurl }}/javadoc/kouinject-0.6/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](https://github.com/blurpy/kouinject-examples/tree/master/kouinject-0.6-examples).
 
 
-To use KouInject you need to create an instance of an [Injector](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.6/net/usikkert/kouinject/Injector.html). There is only one implementation in v0.6, and that is the [DefaultInjector](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.6/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
+To use KouInject you need to create an instance of an [Injector]({{ site.baseurl }}/javadoc/kouinject-0.6/net/usikkert/kouinject/Injector.html). There is only one implementation in v0.6, and that is the [DefaultInjector]({{ site.baseurl }}/javadoc/kouinject-0.6/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
 
 ```
 Injector injector = new DefaultInjector("some.basepackage");
 ```
 
-The injector will now scan the classpath for any classes marked with the annotation [@Component](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.6/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
+The injector will now scan the classpath for any classes marked with the annotation [@Component]({{ site.baseurl }}/javadoc/kouinject-0.6/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
 
 Here is an example of a bean in its simplest form:
 

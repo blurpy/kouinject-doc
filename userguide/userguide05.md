@@ -11,8 +11,8 @@ KouInject is a [dependency injection](http://en.wikipedia.org/wiki/Dependency_in
 
 Version 0.5 was the first public release, and was not based on any real specification. The API is deprecated, but still available here for those who need it.
 
-  * Javadoc for the API is available here: [KouInject v0.5 API](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.5/index.html)
-  * Example code is available here: [KouInject v0.5 examples](http://kouinject.googlecode.com/svn/examples/kouinject-0.5-examples/)
+  * Javadoc for the API is available here: [KouInject v0.5 API]({{ site.baseurl }}/javadoc/kouinject-0.5/index.html)
+  * Example code is available here: [KouInject v0.5 examples](https://github.com/blurpy/kouinject-examples/tree/master/kouinject-0.5-examples)
 
 Take a look at the code below for a full example that can run be without modification.
 
