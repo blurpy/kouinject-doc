@@ -77,7 +77,7 @@ You can create your own annotations to use instead of the default `@Component` i
 
 A custom `@Component` is defined like this:
 
-```
+```java
 package some.basepackage;
 
 import java.lang.annotation.Documented;
