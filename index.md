@@ -86,7 +86,7 @@ ZooClient zooClient = injector.getBean(ZooClient.class);
 
 ## Requirements:
 
-  * Java SE 6 (http://java.oracle.com)
+  * Java SE 6 ([http://java.oracle.com](http://java.oracle.com))
 
 
 ## Maven
