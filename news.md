@@ -81,7 +81,7 @@ KouInject v0.7 is now available.
 
 There are two new features since last time. You can now inject collections of beans, and you can scan multiple base packages for beans. Check the [user guide]({{ site.baseurl }}/userguide/0.7/) for more details.
 
-I was originally going to wait until [issue 3](https://code.google.com/p/kouinject/issues/detail?id=3) was done and release it as v1.0. But then a user wanted to know when [issue 8](https://code.google.com/p/kouinject/issues/detail?id=8) would be completed, so I decided to add this feature and make another release first. It's been a while since v0.6, so it was about time for a release anyway.
+I was originally going to wait until [issue 3](https://github.com/blurpy/kouinject/issues/3) was done and release it as v1.0. But then a user wanted to know when [issue 8](https://github.com/blurpy/kouinject/issues/8) would be completed, so I decided to add this feature and make another release first. It's been a while since v0.6, so it was about time for a release anyway.
 
 Enjoy!
 
