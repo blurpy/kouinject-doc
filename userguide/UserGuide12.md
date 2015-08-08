@@ -1,11 +1,5 @@
-﻿#summary How to use KouInject v1.2 (current release)
-#labels Featured
-
-
-<h1>User guide</h1>
-
-
-
+---
+---
 
 
 # About KouInject
