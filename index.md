@@ -87,3 +87,35 @@ ZooClient zooClient = injector.getBean(ZooClient.class);
 ## Requirements:
 
   * Java SE 6 (http://java.oracle.com)
+
+
+## Maven
+
+KouInject is available in Maven Central Repository. The only thing you need to do to use KouInject in a Maven project is add the KouInject dependency.
+
+Put this in the `<dependencies>` section of your pom.xml and you are ready to go:
+
+```
+<dependency>
+  <groupId>net.usikkert.kouinject</groupId>
+  <artifactId>kouinject</artifactId>
+  <version>1.2</version>
+</dependency>
+```
+
+
+### Using a snapshot version
+
+To try the latest version of KouInject you can use a snapshot.
+
+Put this in the `<repositories>` section of your pom.xml:
+
+```
+<repository>
+  <id>sonatype-nexus-snapshots</id>
+  <name>Sonatype Nexus Snapshot Repository</name>
+  <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+</repository>
+```
+
+And then you can use `1.3-SNAPSHOT` as the version, instead of `1.2` like shown above.
