@@ -17,21 +17,21 @@ JSR-330 gives you a standard way of annotating injections in your beans (objects
 
 Changes since v1.0:
 
-  * [Added support for factory methods with @Produces](#@Produces.md)
+  * [Added support for factory methods with @Produces](#produces)
 
 
 ## Getting started
 
-The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](http://kouinject.googlecode.com/svn/examples/kouinject-1.1-examples/).
+The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API]({{ site.baseurl }}/javadoc/kouinject-1.1/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](https://github.com/blurpy/kouinject-examples/tree/master/kouinject-1.1-examples).
 
 
-To use KouInject you need to create an instance of an [Injector](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/Injector.html). There is only one implementation, and that is the [DefaultInjector](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
+To use KouInject you need to create an instance of an [Injector]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/Injector.html). There is only one implementation, and that is the [DefaultInjector]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
 
 ```
 Injector injector = new DefaultInjector("some.basepackage");
 ```
 
-The injector will now scan the classpath for any classes marked with the annotation [@Component](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
+The injector will now scan the classpath for any classes marked with the annotation [@Component]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
 
 Here is an example of a bean in its simplest form:
 
@@ -320,7 +320,7 @@ Here you can see that a provider with SomeOtherBean as generic argument is injec
 
 If you have several implementations of an interface you might want to inject all of them at the same time. This is possible by injecting a collection of beans. Only the collection interface is accepted. List, Set and Queue is unsupported.
 
-The same rules for qualifiers apply to collections as well. So if you specify a qualifier on the collection then only beans having that qualifier will be injected. If you don't specify a qualifier then only beans without a qualifier (or is of the exact same class) will be injected. If this is too restrictive, you can use the special [@Any](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Any.html) qualifier on the collection. `@Any` effectively means that the qualifier check is ignored, so you get all matching bean implementations even if they have a qualifier or not.
+The same rules for qualifiers apply to collections as well. So if you specify a qualifier on the collection then only beans having that qualifier will be injected. If you don't specify a qualifier then only beans without a qualifier (or is of the exact same class) will be injected. If this is too restrictive, you can use the special [@Any]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Any.html) qualifier on the collection. `@Any` effectively means that the qualifier check is ignored, so you get all matching bean implementations even if they have a qualifier or not.
 
 Example:
 
@@ -369,7 +369,7 @@ Here we can see one listener with a qualifier, and one without. To get an instan
 
 ### CollectionProvider
 
-[CollectionProvider](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/CollectionProvider.html) is like a regular [Provider](#Provider.md), except it returns a [Collection](#Collection.md) of beans instead of a single bean. Useful if you need to lazy-load beans or need multiple instances of the beans in the collection.
+[CollectionProvider]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/CollectionProvider.html) is like a regular [Provider](#provider), except it returns a [Collection](#collection) of beans instead of a single bean. Useful if you need to lazy-load beans or need multiple instances of the beans in the collection.
 
 Example:
 
@@ -397,7 +397,7 @@ The result of this injection after calling `get()` is exactly the same as shown 
 
 ### @Produces
 
-The [@Produces](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Produces.html) annotation is used to mark factory methods in beans. The functionality is based on the [JSR-299](http://docs.jboss.org/weld/reference/1.0.0/en-US/html/producermethods.html) specification, but adapted to match the capabilities of a JSR-330 based injector.
+The [@Produces]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Produces.html) annotation is used to mark factory methods in beans. The functionality is based on the [JSR-299](http://docs.jboss.org/weld/reference/1.0.0/en-US/html/producermethods.html) specification, but adapted to match the capabilities of a JSR-330 based injector.
 
 A factory method is simply a method in a bean that has the `@Produces` annotation, and a return value. The method may be of any visibility, but can not be static, or overridden (as annotations aren't inherited), and must never return `null`. The method may also specify the scope and qualifier of the bean it creates instances of, using annotations.
 
@@ -451,7 +451,7 @@ Factory methods do not yet handle generics, so `List<String>` will look the same
 
 #### FactoryContext
 
-[FactoryContext](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/factory/FactoryContext.html) is an interface that can be injected into a factory method to get the qualifier of the parameter or field that requested the injection. This is useful when combined with the [@Any](http://kouinject.googlecode.com/svn/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Any.html) qualifier.
+[FactoryContext]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/factory/FactoryContext.html) is an interface that can be injected into a factory method to get the qualifier of the parameter or field that requested the injection. This is useful when combined with the [@Any]({{ site.baseurl }}/javadoc/kouinject-1.1/net/usikkert/kouinject/annotation/Any.html) qualifier.
 
 Using `@Any` on the factory method effectively means that the qualifier check is ignored, so that the factory method will be asked to produce bean instances for all requested injections matching only the return class of the method.
 
@@ -515,4 +515,4 @@ If you use Maven then this is handled automatically for you.
 
 ## Upgrading from v1.0
 
-Upgrading from v1.0 should be straight forward. An overview of changes is available here: [CHANGES](http://kouinject.googlecode.com/svn/tags/kouinject-1.1/CHANGES)
+Upgrading from v1.0 should be straight forward. An overview of changes is available here: [CHANGES](https://github.com/blurpy/kouinject/blob/kouinject-1.1/CHANGES)
