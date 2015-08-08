@@ -36,13 +36,13 @@ _This is just a quick preview of some of the capabilities of KouInject. Head ove
 
 You need an injector to load the beans. It's created like this:
 
-```
+```java
 Injector injector = new DefaultInjector("com.zoo.app");
 ```
 
 The injector will scan the package _com.zoo.app_ and all sub-packages for beans. All beans annotated with `@Component` will be available for injection. Like this:
 
-```
+```java
 @Component
 public class MonkeyService {
 
@@ -51,7 +51,7 @@ public class MonkeyService {
 
 To get `MonkeyService` injected somewhere you have to use `@Inject`:
 
-```
+```java
 @Component
 public class MonkeyController {
 
@@ -62,7 +62,7 @@ public class MonkeyController {
 
 Perhaps that `MonkeyController` also needs a `MonkeyValidator`, but the validator requires extra runtime configuration to be setup correctly. In that case, you can use a factory, like this:
 
-```
+```java
 @Component
 public class Factory {
 
@@ -79,7 +79,7 @@ public class Factory {
 
 Beans are loaded on demand, so nothing happens until you ask the injector for at least one bean. You would typically ask for a bean that initializes the application, like creating the user interface and starting services. Like this:
 
-```
+```java
 ZooClient zooClient = injector.getBean(ZooClient.class);
 ```
 
@@ -95,7 +95,7 @@ KouInject is available in Maven Central Repository. The only thing you need to d
 
 Put this in the `<dependencies>` section of your pom.xml and you are ready to go:
 
-```
+```xml
 <dependency>
   <groupId>net.usikkert.kouinject</groupId>
   <artifactId>kouinject</artifactId>
@@ -110,7 +110,7 @@ To try the latest version of KouInject you can use a snapshot.
 
 Put this in the `<repositories>` section of your pom.xml:
 
-```
+```xml
 <repository>
   <id>sonatype-nexus-snapshots</id>
   <name>Sonatype Nexus Snapshot Repository</name>

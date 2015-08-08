@@ -1,4 +1,6 @@
 permalink: pretty
 baseurl: /kouinject-doc
+highlighter: pygments
 kramdown:
   input: GFM
+markdown: redcarpet
