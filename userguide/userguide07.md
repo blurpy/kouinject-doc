@@ -14,22 +14,22 @@ JSR-330 gives you a standard way of annotating injections in your beans (objects
 
 ## What's new
 
-  * [Injecting collections of beans](#Collection.md)
-  * [Multiple base packages](#Multiple_base_packages.md)
+  * [Injecting collections of beans](#collection)
+  * [Multiple base packages](#multiple-base-packages)
 
 
 ## Getting started
 
-The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.7/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](http://kouinject.googlecode.com/svn/examples/kouinject-0.7-examples/).
+The best way to get started is to read the [JSR-330 API](http://atinject.googlecode.com/svn/tags/1/javadoc/javax/inject/package-summary.html). That should give you an understanding of the capabilities of the framework. The [KouInject API]({{ site.baseurl }}/javadoc/kouinject-0.7/index.html) is also available, but most of the API is not meant for public use. The public part of the API is shown in this guide. If you want to see complete examples you should check out the [KouInject example code](https://github.com/blurpy/kouinject-examples/tree/master/kouinject-0.7-examples).
 
 
-To use KouInject you need to create an instance of an [Injector](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.7/net/usikkert/kouinject/Injector.html). There is only one implementation in v0.7, and that is the [DefaultInjector](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.7/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
+To use KouInject you need to create an instance of an [Injector]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/Injector.html). There is only one implementation in v0.7, and that is the [DefaultInjector]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/DefaultInjector.html). It's used like this:
 
 ```
 Injector injector = new DefaultInjector("some.basepackage");
 ```
 
-The injector will now scan the classpath for any classes marked with the annotation [@Component](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.7/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
+The injector will now scan the classpath for any classes marked with the annotation [@Component]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/annotation/Component.html) in the package `some.basepackage` and any sub-packages.
 
 Here is an example of a bean in its simplest form:
 
@@ -318,7 +318,7 @@ Here you can see that a provider with SomeOtherBean as generic argument is injec
 
 If you have several implementations of an interface you might want to inject all of them at the same time. This is possible by injecting a collection of beans. Only the collection interface is accepted. List, Set and Queue is unsupported.
 
-The same rules for qualifiers apply to collections as well. So if you specify a qualifier on the collection then only beans having that qualifier will be injected. If you don't specify a qualifier then only beans without a qualifier (or is of the exact same class) will be injected. If this is too restrictive, you can use the special [@Any](http://kouinject.googlecode.com/svn/javadoc/kouinject-0.7/net/usikkert/kouinject/annotation/Any.html) qualifier on the collection. `@Any` effectively means that the qualifier check is ignored, so you get all matching bean implementations even if they have a qualifier or not.
+The same rules for qualifiers apply to collections as well. So if you specify a qualifier on the collection then only beans having that qualifier will be injected. If you don't specify a qualifier then only beans without a qualifier (or is of the exact same class) will be injected. If this is too restrictive, you can use the special [@Any]({{ site.baseurl }}/javadoc/kouinject-0.7/net/usikkert/kouinject/annotation/Any.html) qualifier on the collection. `@Any` effectively means that the qualifier check is ignored, so you get all matching bean implementations even if they have a qualifier or not.
 
 Example:
 
